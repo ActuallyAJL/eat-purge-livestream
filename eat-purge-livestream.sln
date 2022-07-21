@@ -5,6 +5,13 @@ VisualStudioVersion = 17.2.32602.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eat-purge-livestream", "eat-purge-livestream\eat-purge-livestream.csproj", "{4AA412B2-06CD-497A-87A8-C6CD5AA64F9B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E6160CCD-0444-401D-9CA2-35CA9E38264C}"
+	ProjectSection(SolutionItems) = preProject
+		SQL\01_Db_Create.sql = SQL\01_Db_Create.sql
+		SQL\02_Seed_Data.sql = SQL\02_Seed_Data.sql
+		SQL\03_Sandbox_Test.sql = SQL\03_Sandbox_Test.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
