@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace eat_purge_livestream.Models
 {
@@ -7,6 +7,6 @@ namespace eat_purge_livestream.Models
     {
         public int Id { get; set; }
         [Required]
-        public Image Body { get; set; }
+        public IFormFile Body { get; set; }
     }
 }

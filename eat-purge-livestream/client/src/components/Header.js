@@ -17,13 +17,7 @@ export default function Header({ isLoggedIn, getLoggedInUser }) {
 
   useEffect(() => {
     if (isLoggedIn) {
-      getLoggedInUser().then((currentUser) => {
-        if (currentUser.userTypeId == 1) {
-          setIsAdmin(true);
-        } else {
-          setIsAdmin(false);
-        }
-      });
+      getLoggedInUser();
     }
   }, [isLoggedIn]);
 
@@ -32,6 +26,16 @@ export default function Header({ isLoggedIn, getLoggedInUser }) {
       <NavItem>
         <NavLink tag={RRNavLink} to="/">
           Home
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink tag={RRNavLink} to="uploadImage">
+          Upload Image
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink tag={RRNavLink} to="accountDetails">
+          Account Details
         </NavLink>
       </NavItem>
     </>,

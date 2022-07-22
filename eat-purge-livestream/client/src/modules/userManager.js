@@ -11,4 +11,3 @@ export const getUserById = (q) => {
 export const getUserByFirebaseId = (firebase) => {
   return fetch(`${baseUrl}/${firebase}`).then((res) => res.json());
 };
-// TODO Make an edit usertype method

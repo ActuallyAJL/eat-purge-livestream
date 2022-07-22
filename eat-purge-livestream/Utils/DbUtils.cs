@@ -60,7 +60,7 @@ namespace eat_purge_livestream.Utils
             var ordinal = reader.GetOrdinal(column);
             if (reader.IsDBNull(ordinal))
             {
-                return null;
+                return 0;
             }
 
             return reader.GetInt32(ordinal);

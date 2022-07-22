@@ -37,7 +37,7 @@ namespace eat_purge_livestream.Repositories
                             LastName = DbUtils.GetString(reader, "LastName"),
                             Email = DbUtils.GetString(reader, "Email"),
                             CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageId = DbUtils.GetInt(reader, "ImageId"),
+                            ImageId = (int)DbUtils.GetNullableInt(reader, "ImageId")
                         };
                     }
                     reader.Close();
@@ -62,7 +62,7 @@ namespace eat_purge_livestream.Repositories
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
                     DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
                     DbUtils.AddParameter(cmd, "@CreateDateTime", userProfile.CreateDateTime);
-                    DbUtils.AddParameter(cmd, "@ImageId", DBNull.Value);
+                    DbUtils.AddParameter(cmd, "@ImageId", null);
 
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
@@ -93,7 +93,7 @@ namespace eat_purge_livestream.Repositories
                             Email = DbUtils.GetString(reader, "Email"),
                             FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
                             CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
-                            ImageId = DbUtils.GetInt(reader, "ImageId")
+                            ImageId = (int)DbUtils.GetNullableInt(reader, "ImageId")
                         });
                     }
 
@@ -111,7 +111,7 @@ namespace eat_purge_livestream.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT up.Id AS UserId, up.FirstName, up.LastName, up.Email, up.CreateDateTime
+                        SELECT up.Id AS UserId, up.FirstName, up.LastName, up.Email, up.CreateDateTime, up.ImageId
                         FROM UserProfile as up
                         WHERE up.Id = @userId";
                     cmd.Parameters.AddWithValue("@userId", userId);
@@ -125,6 +125,7 @@ namespace eat_purge_livestream.Repositories
                             LastName = DbUtils.GetString(reader, "LastName"),
                             Email = DbUtils.GetString(reader, "email"),
                             CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
+                            ImageId = (int)DbUtils.GetNullableInt(reader, "ImageId")
                         };
                         reader.Close();
                         return profile;
