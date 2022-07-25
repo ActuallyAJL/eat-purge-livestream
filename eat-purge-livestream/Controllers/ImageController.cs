@@ -32,12 +32,13 @@ namespace eat_purge_livestream.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(IFormFile data)
+        public async Task<IActionResult> Add([FromForm]IFormFile data)
         {
             Image image = new Image();
+            image.Body = data;
             using (var memoryStream = new MemoryStream())
             {
-                await data.CopyToAsync(memoryStream);
+                await image.Body.CopyToAsync(memoryStream);
 
                 if (memoryStream.Length == 0)
                 {

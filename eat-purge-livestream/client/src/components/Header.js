@@ -52,7 +52,7 @@ export default function Header({ isLoggedIn, getLoggedInUser }) {
     <div>
       <Navbar color="light" light expand="md">
         <NavbarBrand tag={RRNavLink} to="/">
-          Tabloid
+          Eat, Purge, Livestream
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
