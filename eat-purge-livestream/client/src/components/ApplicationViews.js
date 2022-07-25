@@ -5,6 +5,7 @@ import Register from "./Register";
 import { Home } from "./Home";
 import { UserDetails } from "./Users/UserDetails";
 import { ImageCreateForm } from "./Images/ImageCreateForm";
+import { ViewImage } from "./Images/ViewImage";
 
 export default function ApplicationViews({ isLoggedIn, getLoggedInUser }) {
   return (
@@ -16,6 +17,7 @@ export default function ApplicationViews({ isLoggedIn, getLoggedInUser }) {
             element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
           />
           <Route path="uploadImage" element={<ImageCreateForm />} />
+          <Route path="viewImage" element={<ViewImage />} />
           <Route
             path="accountDetails"
             element={<UserDetails getLoggedInUser={getLoggedInUser} />}
