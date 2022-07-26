@@ -14,5 +14,25 @@ namespace eat_purge_livestream.Controllers
         {
             _postReactionRepository = postReactionRepository;
         }
+
+        [HttpPost]
+        public IActionResult Post(PostReaction pr)
+        {
+            _postReactionRepository.Add(pr);
+            return CreatedAtAction("Get", new { id = pr.Id }, pr);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _postReactionRepository.Delete(id);
+            return NoContent();
+        }
+
+        [HttpGet("{postId}/{reactionId}")]
+        public IActionResult Get(int postId, int reactionId)
+        {
+            return Ok(_postReactionRepository.GetCountByPostId(postId, reactionId));
+        }
     }
 }

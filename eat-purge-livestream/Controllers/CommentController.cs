@@ -14,5 +14,37 @@ namespace eat_purge_livestream.Controllers
         {
             _commentRepository = commentRepository;
         }
+
+        [HttpPost]
+        public IActionResult Post(Comment comment)
+        {
+            _commentRepository.Add(comment);
+            return CreatedAtAction("Get", new { id = comment.Id }, comment);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _commentRepository.Delete(id);
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Comment comment)
+        {
+            if (id != comment.Id)
+            {
+                return BadRequest();
+            }
+
+            _commentRepository.Update(comment);
+            return NoContent();
+        }
+
+        [HttpGet("{postId}")]
+        public IActionResult GetByPost(int postId)
+        {
+            return Ok(_commentRepository.GetAllByPostId(postId));
+        }
     }
 }

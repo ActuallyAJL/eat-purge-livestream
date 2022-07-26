@@ -8,6 +8,6 @@ namespace eat_purge_livestream.Repositories
         void Add(Comment comment);
         void Delete(int id);
         void Update(Comment comment);
-        List<Comment> GetAllByPostId(int id);
+        List<Comment> GetAllByPostId(int postId);
     }
 }

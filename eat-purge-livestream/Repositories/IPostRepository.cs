@@ -10,6 +10,6 @@ namespace eat_purge_livestream.Repositories
         void Delete(int id);
         List<Post> GetAll();
         Post Get(int id);
-        List<Post> GetByUserId(int id);
+        List<Post> GetByUserId(int userId);
     }
 }
