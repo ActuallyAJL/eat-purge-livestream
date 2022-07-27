@@ -24,9 +24,9 @@ namespace eat_purge_livestream.Repositories
 
                     DbUtils.AddParameter(cmd, "@title", post.Title);
                     DbUtils.AddParameter(cmd, "@content", post.Content);
-                    DbUtils.AddParameter(cmd, "@date", post.CreateDateTime);
-                    DbUtils.AddParameter(cmd, "@category", post.ImageId);
-                    DbUtils.AddParameter(cmd, "@user", post.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@createDateTime", post.CreateDateTime);
+                    DbUtils.AddParameter(cmd, "@imageId", post.ImageId);
+                    DbUtils.AddParameter(cmd, "@userProfileId", post.UserProfileId);
 
                     post.Id = (int)cmd.ExecuteScalar();
                 }
@@ -47,7 +47,7 @@ namespace eat_purge_livestream.Repositories
 
                     DbUtils.AddParameter(cmd, "@content", post.Content);
                     DbUtils.AddParameter(cmd, "@title", post.Title);
-                    DbUtils.AddParameter(cmd, "@image", post.ImageId);
+                    DbUtils.AddParameter(cmd, "@imageId", post.ImageId);
                     DbUtils.AddParameter(cmd, "@id", post.Id);
 
                     cmd.ExecuteNonQuery();

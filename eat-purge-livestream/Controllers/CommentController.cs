@@ -19,7 +19,7 @@ namespace eat_purge_livestream.Controllers
         public IActionResult Post(Comment comment)
         {
             _commentRepository.Add(comment);
-            return CreatedAtAction("Get", new { id = comment.Id }, comment);
+            return Ok(comment);
         }
 
         [HttpDelete("{id}")]

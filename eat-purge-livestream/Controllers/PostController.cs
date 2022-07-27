@@ -57,7 +57,7 @@ namespace eat_purge_livestream.Controllers
             return Ok(post);
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("user/{userId}")]
         public IActionResult GetByUser(int userId)
         {
             return Ok(_postRepository.GetByUserId(userId));
