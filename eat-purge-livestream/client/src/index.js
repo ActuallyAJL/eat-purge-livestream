@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import firebase from "firebase/app";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.css";
 import { getUserByFirebaseId } from "./modules/userManager";
 
 const getLoggedInUser = () => {

@@ -6,6 +6,8 @@ import { Home } from "./Home";
 import { UserDetails } from "./Users/UserDetails";
 import { ImageCreateForm } from "./Images/ImageCreateForm";
 import { ViewImage } from "./Images/ViewImage";
+import { PostList } from "./Posts/PostList";
+import { PostNew } from "./Posts/PostNew";
 
 export default function ApplicationViews({ isLoggedIn, getLoggedInUser }) {
   return (
@@ -14,9 +16,10 @@ export default function ApplicationViews({ isLoggedIn, getLoggedInUser }) {
         <Route path="/">
           <Route
             index
-            element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
+            element={isLoggedIn ? <PostList /> : <Navigate to="/login" />}
           />
           <Route path="uploadImage" element={<ImageCreateForm />} />
+          <Route path="addPost" element={<PostNew />} />
           <Route path="viewImage" element={<ViewImage />} />
           <Route
             path="accountDetails"
