@@ -8,5 +8,10 @@ namespace eat_purge_livestream.Models
         public int Id { get; set; }
         [Required]
         public IFormFile Body { get; set; }
+
+        public override string ToString()
+        {
+            return Id.ToString();
+        }
     }
 }

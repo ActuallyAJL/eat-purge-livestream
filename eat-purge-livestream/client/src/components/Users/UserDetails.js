@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { getLoggedInUser } from "../../modules/userManager";
 
-export const UserDetails = ({ getLoggedInUser }) => {
+export const UserDetails = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   useEffect(() => {

@@ -9,7 +9,7 @@ import { ViewImage } from "./Images/ViewImage";
 import { PostList } from "./Posts/PostList";
 import { PostNew } from "./Posts/PostNew";
 
-export default function ApplicationViews({ isLoggedIn, getLoggedInUser }) {
+export default function ApplicationViews({ isLoggedIn }) {
   return (
     <main>
       <Routes>
@@ -21,10 +21,7 @@ export default function ApplicationViews({ isLoggedIn, getLoggedInUser }) {
           <Route path="uploadImage" element={<ImageCreateForm />} />
           <Route path="addPost" element={<PostNew />} />
           <Route path="viewImage" element={<ViewImage />} />
-          <Route
-            path="accountDetails"
-            element={<UserDetails getLoggedInUser={getLoggedInUser} />}
-          />
+          <Route path="accountDetails" element={<UserDetails />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="*" element={<p>Whoops, nothing here...</p>} />

@@ -1,3 +1,5 @@
+import firebase from "firebase/app";
+
 const baseUrl = "/api/UserProfile";
 
 export const getAllUsers = () => {
@@ -10,4 +12,11 @@ export const getUserById = (id) => {
 
 export const getUserByFirebaseId = (firebase) => {
   return fetch(`${baseUrl}/${firebase}`).then((res) => res.json());
+};
+
+export const getLoggedInUser = () => {
+  const firebaseUserId = getUserByFirebaseId(
+    firebase.auth().currentUser.uid.toString()
+  );
+  return firebaseUserId;
 };
