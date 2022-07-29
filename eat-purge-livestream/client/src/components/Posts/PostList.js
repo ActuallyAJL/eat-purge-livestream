@@ -23,15 +23,11 @@ export const PostList = ({ getLoggedInUser }) => {
       >
         Add Post
       </Button>
-      <CardColumns>
-        <CardGroup>
-          {posts.map((post, index) => {
-            if ((index + 1) % 5 == 1) {
-              console.log(index);
-            }
-            return <PostCard post={post} key={post.id} />;
-          })}
-        </CardGroup>
+
+      <CardColumns style={{ width: "50%", marginLeft: "25%" }}>
+        {posts.map((post) => (
+          <PostCard post={post} key={post.id} />
+        ))}
       </CardColumns>
     </>
   );
