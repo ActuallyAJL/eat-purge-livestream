@@ -4,7 +4,7 @@ import { CardGroup, CardColumns, Button } from "reactstrap";
 import { getAllPosts } from "../../modules/postManager";
 import { PostCard } from "./PostCard";
 
-export const PostList = ({ getLoggedInUser }) => {
+export const PostList = () => {
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
