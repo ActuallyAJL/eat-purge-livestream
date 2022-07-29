@@ -13,14 +13,6 @@ export const PostNew = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    post.imageId = imageId;
-  }, [image]);
-
-  useEffect(() => {
-    postPost(post).then(navigate("/"));
-  }, [post.imageId]);
-
   const controlInput = (e) => {
     let target = { ...post };
     target[e.target.id] = e.target.value;
@@ -33,17 +25,26 @@ export const PostNew = () => {
 
   const handleSave = (e) => {
     e.preventDefault();
-    post.createDateTime = Date.now;
     imageFormData.append("data", image);
-    postImage(imageFormData).then((r) => {
-      setImageId(parseInt(r.headers.get("location").split("Image/")[1]));
-    });
+    postImage(imageFormData)
+      .then((r) => {
+        let eyedee = parseInt(r.headers.get("location").split("Image/")[1]);
+        setImageId(eyedee);
+        return eyedee;
+      })
+      .then((r) => {
+        post.imageId = r;
+        const now = Date.now();
+        post.createDateTime = new Date(now).toISOString();
+        console.log(post.createDateTime);
+        postPost(post).then(navigate("/"));
+      });
   };
 
   return (
     <>
       <h1>Add a New Post</h1>
-      <Form onSubmit={() => handleSave()}>
+      <Form onSubmit={handleSave}>
         <FormGroup>
           <Label for="title">Title</Label>
           <Input

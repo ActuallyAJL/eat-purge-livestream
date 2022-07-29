@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CardGroup, Button } from "reactstrap";
+import { CardGroup, CardColumns, Button } from "reactstrap";
 import { getAllPosts } from "../../modules/postManager";
 import { PostCard } from "./PostCard";
 
@@ -23,11 +23,16 @@ export const PostList = ({ getLoggedInUser }) => {
       >
         Add Post
       </Button>
-      <CardGroup>
-        {posts.map((post) => (
-          <PostCard post={post} key={post.id} />
-        ))}
-      </CardGroup>
+      <CardColumns>
+        <CardGroup>
+          {posts.map((post, index) => {
+            if ((index + 1) % 5 == 1) {
+              console.log(index);
+            }
+            return <PostCard post={post} key={post.id} />;
+          })}
+        </CardGroup>
+      </CardColumns>
     </>
   );
 };
