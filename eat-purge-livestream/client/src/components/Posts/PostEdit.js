@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Form, FormGroup, Input, Label, Button } from "reactstrap";
-import { postPost } from "../../modules/postManager";
-import { postImage } from "../../modules/imageManager";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { updatePost } from "../../modules/postManager";
+import { postImage, deleteImage } from "../../modules/imageManager";
 
-export const PostNew = () => {
-  const [post, setPost] = useState({});
+export const PostEdit = () => {
+  const [post, setPost] = useState();
   const [image, setImage] = useState();
   const [imageId, setImageId] = useState(0);
   const imageFormData = new FormData();
 
+  const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setPost(location.state.post);
+  }, []);
+
+  const handleSelectImage = (e) => {
+    setImage(...e.target.files);
+  };
 
   const controlInput = (e) => {
     let target = { ...post };
@@ -18,12 +27,9 @@ export const PostNew = () => {
     setPost(target);
   };
 
-  const handleSelectImage = (e) => {
-    setImage(...e.target.files);
-  };
-
-  const handleSave = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
+    deleteImage(post.imageId);
     imageFormData.append("data", image);
     postImage(imageFormData)
       .then((r) => {
@@ -33,22 +39,20 @@ export const PostNew = () => {
       })
       .then((r) => {
         post.imageId = r;
-        const now = Date.now();
-        post.createDateTime = new Date(now).toISOString();
-        postPost(post).then(navigate("/"));
+        updatePost(post).then(navigate("/"));
       });
   };
 
   return (
     <>
-      <h1>Add a New Post</h1>
-      <Form onSubmit={handleSave}>
+      <h1>Edit Post</h1>
+      <Form onSubmit={handleUpdate}>
         <FormGroup>
           <Label for="title">Title</Label>
           <Input
             id="title"
             type="text"
-            placeholder="Title"
+            placeholder={post?.title}
             onChange={controlInput}
           />
         </FormGroup>
@@ -57,12 +61,12 @@ export const PostNew = () => {
           <Input
             id="content"
             type="textarea"
-            placeholder="Post Body"
+            placeholder={post?.content}
             onChange={controlInput}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="imageToUpload">Image: </Label>
+          <Label for="imageToUpload">Change Image: </Label>
           <Input id="imageToUpload" type="file" onChange={handleSelectImage} />
         </FormGroup>
         <Button type="submit" required>

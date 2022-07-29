@@ -29,7 +29,7 @@ export default function Header({ isLoggedIn }) {
           Home
         </NavLink>
       </NavItem>
-      <NavItem>
+      {/* <NavItem>
         <NavLink tag={RRNavLink} to="uploadImage">
           Upload Image
         </NavLink>
@@ -38,7 +38,7 @@ export default function Header({ isLoggedIn }) {
         <NavLink tag={RRNavLink} to="viewImage">
           View Image
         </NavLink>
-      </NavItem>
+      </NavItem> */}
       <NavItem>
         <NavLink tag={RRNavLink} to="accountDetails">
           Account Details

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -17,6 +18,8 @@ export const PostCard = ({ post }) => {
   const [postImageUrl, setpostImageUrl] = useState("");
   const [postedBy, setPostedBy] = useState({});
   const [currentUser, setCurrentUser] = useState({});
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getImageById(post.imageId).then((blob) => setpostImageUrl(blob));
@@ -37,7 +40,18 @@ export const PostCard = ({ post }) => {
         <CardImg alt="Eat, Purge, Livestream" src={`${postImageUrl}`} />
         <CardText>{post.content}</CardText>
         {currentUser.id == postedBy.id ? (
-          <Button onClick={handleDeletePost}>Delete</Button>
+          <>
+            <Button
+              onClick={() => {
+                navigate(`editPost/${post.id}`, {
+                  state: { post: post },
+                });
+              }}
+            >
+              Edit
+            </Button>
+            <Button onClick={handleDeletePost}>Delete</Button>
+          </>
         ) : (
           ""
         )}
