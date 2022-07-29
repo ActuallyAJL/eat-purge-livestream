@@ -13,6 +13,7 @@ import { getImageById } from "../../modules/imageManager";
 import { getUserById } from "../../modules/userManager";
 import { getLoggedInUser } from "../../modules/userManager";
 import { deletePost } from "../../modules/postManager";
+import { PostReactionList } from "../PostReactions/PostReactionList";
 
 export const PostCard = ({ post }) => {
   const [postImageUrl, setpostImageUrl] = useState("");
@@ -37,6 +38,11 @@ export const PostCard = ({ post }) => {
       <CardBody>
         <CardTitle>{post.title}</CardTitle>
         <CardSubtitle>By: {postedBy.fullName}</CardSubtitle>
+        <PostReactionList
+          post={post}
+          user={currentUser}
+          key={post.id}
+        ></PostReactionList>
         <CardImg alt="Eat, Purge, Livestream" src={`${postImageUrl}`} />
         <CardText>{post.content}</CardText>
         {currentUser.id == postedBy.id ? (

@@ -15,6 +15,12 @@ namespace eat_purge_livestream.Controllers
             _reactionRepository = reactionRepository;
         }
 
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_reactionRepository.GetAll());
+        }
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {

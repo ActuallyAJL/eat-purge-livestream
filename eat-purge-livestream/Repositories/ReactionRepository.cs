@@ -9,6 +9,40 @@ namespace eat_purge_livestream.Repositories
     {
         public ReactionRepository(IConfiguration configuration)
             : base(configuration) { }
+
+        public List<Reaction> GetAll()
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                                    SELECT Id, Name, ImageId
+                                    FROM Reaction
+                                    ";
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var reactions = new List<Reaction>();
+
+                        while (reader.Read())
+                        {
+                            var reaction = new Reaction
+                            {
+                                Id = DbUtils.GetInt(reader, "Id"),
+                                Name = DbUtils.GetString(reader, "Name"),
+                                ImageId = DbUtils.GetInt(reader, "ImageId")
+                            };
+                            reactions.Add(reaction);
+                        }
+                        return reactions;
+                    }
+                }
+            }
+        }
+
         public Reaction Get(int id)
         {
             using (var conn = Connection)

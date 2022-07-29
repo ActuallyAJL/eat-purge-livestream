@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CardGroup, CardColumns, Button } from "reactstrap";
+import { CardGroup, CardColumns, Button, Row } from "reactstrap";
 import { getAllPosts } from "../../modules/postManager";
 import { PostCard } from "./PostCard";
 

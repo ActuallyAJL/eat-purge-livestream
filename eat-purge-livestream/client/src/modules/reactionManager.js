@@ -4,6 +4,10 @@ export const getReactionById = (id) => {
   return fetch(`${baseUrl}/${id}`).then((res) => res.json());
 };
 
+export const getAllReactions = () => {
+  return fetch(baseUrl).then((res) => res.json());
+};
+
 export const createReaction = (reaction) => {
   return fetch(baseUrl, {
     method: "POST",
