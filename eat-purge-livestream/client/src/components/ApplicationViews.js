@@ -9,6 +9,7 @@ import { ViewImage } from "./Images/ViewImage";
 import { PostList } from "./Posts/PostList";
 import { PostNew } from "./Posts/PostNew";
 import { PostEdit } from "./Posts/PostEdit";
+import { PostDetails } from "./Posts/PostDetails";
 
 export default function ApplicationViews({ isLoggedIn }) {
   return (
@@ -22,6 +23,7 @@ export default function ApplicationViews({ isLoggedIn }) {
           <Route path="uploadImage" element={<ImageCreateForm />} />
           <Route path="addPost" element={<PostNew />} />
           <Route path="editPost/:postId" element={<PostEdit />} />
+          <Route path="postDetails/:postId" element={<PostDetails />} />
           <Route path="viewImage" element={<ViewImage />} />
           <Route path="accountDetails" element={<UserDetails />} />
           <Route path="login" element={<Login />} />

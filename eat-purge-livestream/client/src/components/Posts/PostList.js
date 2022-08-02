@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { CardGroup, CardColumns, Button, Row } from "reactstrap";
+import { Button, Row } from "reactstrap";
 import { getAllPosts } from "../../modules/postManager";
 import { PostCard } from "./PostCard";
 
@@ -23,12 +23,11 @@ export const PostList = () => {
       >
         Add Post
       </Button>
-
-      <CardColumns style={{ width: "50%", marginLeft: "25%" }}>
+      <Row>
         {posts.map((post) => (
           <PostCard post={post} key={post.id} />
         ))}
-      </CardColumns>
+      </Row>
     </>
   );
 };
