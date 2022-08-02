@@ -8,6 +8,10 @@ import {
   CardImg,
   CardText,
   Button,
+  FormGroup,
+  Label,
+  Input,
+  Form,
 } from "reactstrap";
 import { PostReactionList } from "../PostReactions/PostReactionList";
 import { deletePost, getPostById } from "../../modules/postManager";
@@ -15,12 +19,15 @@ import { getImageById } from "../../modules/imageManager";
 import { getUserById } from "../../modules/userManager";
 import { getLoggedInUser } from "../../modules/userManager";
 import { CommentList } from "../Comments/CommentList";
+import { postComment } from "../../modules/commentManager";
 
 export const PostDetails = () => {
   const [post, setPost] = useState({});
   const [postImageUrl, setpostImageUrl] = useState("");
   const [postedBy, setPostedBy] = useState({});
   const [currentUser, setCurrentUser] = useState({});
+  const [isAddingComment, setIsAddingComment] = useState(false);
+  const [newComment, setNewComment] = useState({});
 
   const { postId } = useParams();
 
@@ -41,6 +48,59 @@ export const PostDetails = () => {
     deletePost(post.id);
     navigate("/");
   };
+
+  const controlInput = (e) => {
+    let target = { ...newComment };
+    target[e.target.id] = e.target.value;
+    setNewComment(target);
+  };
+
+  const handleAddComment = (e) => {
+    e.preventDefault();
+    const now = Date.now();
+    const blob = { ...newComment };
+    blob.createDateTime = new Date(now).toISOString();
+    blob.postId = post.id;
+    blob.userProfileId = currentUser.id;
+    postComment(blob).then(() => {
+      setNewComment(blob);
+      setIsAddingComment(false);
+    });
+  };
+
+  const newCommentCodeArray = [
+    <>
+      <Form onSubmit={handleAddComment}>
+        <FormGroup>
+          <Label for="content">New Comment:</Label>
+          <Input
+            id="content"
+            type="textarea"
+            placeholder="Comment"
+            onChange={controlInput}
+          />
+        </FormGroup>
+        <Button
+          onClick={() => {
+            setIsAddingComment(false);
+          }}
+          required
+        >
+          Cancel
+        </Button>
+        <Button type="submit" required>
+          Submit
+        </Button>
+      </Form>
+    </>,
+    <Button
+      onClick={() => {
+        setIsAddingComment(true);
+      }}
+    >
+      Add Comment
+    </Button>,
+  ];
 
   return (
     <>
@@ -78,6 +138,7 @@ export const PostDetails = () => {
           ) : (
             ""
           )}
+          {isAddingComment ? newCommentCodeArray[0] : newCommentCodeArray[1]}
         </CardBody>
         <CardBody>
           <CommentList post={post} key={post.id}></CommentList>
