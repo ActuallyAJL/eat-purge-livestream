@@ -14,6 +14,7 @@ import { deletePost, getPostById } from "../../modules/postManager";
 import { getImageById } from "../../modules/imageManager";
 import { getUserById } from "../../modules/userManager";
 import { getLoggedInUser } from "../../modules/userManager";
+import { CommentList } from "../Comments/CommentList";
 
 export const PostDetails = () => {
   const [post, setPost] = useState({});
@@ -77,6 +78,9 @@ export const PostDetails = () => {
           ) : (
             ""
           )}
+        </CardBody>
+        <CardBody>
+          <CommentList post={post} key={post.id}></CommentList>
         </CardBody>
       </Card>
     </>
