@@ -61,10 +61,13 @@ export const PostCard = ({ post }) => {
                     state: { post: post },
                   });
                 }}
+                style={{ margin: "1px" }}
               >
                 Edit
               </Button>
-              <Button onClick={handleDeletePost}>Delete</Button>
+              <Button onClick={handleDeletePost} style={{ margin: "1px" }}>
+                Delete
+              </Button>
             </>
           ) : (
             ""
@@ -73,6 +76,7 @@ export const PostCard = ({ post }) => {
             onClick={() => {
               navigate(`postDetails/${post.id}`);
             }}
+            style={{ margin: "1px" }}
           >
             Details
           </Button>

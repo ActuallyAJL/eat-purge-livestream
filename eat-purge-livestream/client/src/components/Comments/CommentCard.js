@@ -59,10 +59,11 @@ export const CommentCard = ({ comment }) => {
             setIsEdittingComment(false);
           }}
           required
+          style={{ margin: "1px" }}
         >
           Cancel
         </Button>
-        <Button type="submit" required>
+        <Button type="submit" required style={{ margin: "1px" }}>
           Submit
         </Button>
       </Form>
@@ -78,10 +79,14 @@ export const CommentCard = ({ comment }) => {
                 onClick={() => {
                   setIsEdittingComment(true);
                 }}
+                style={{ margin: "1px" }}
               >
                 Edit
               </Button>
-              <Button onClick={handleDeleteComment}>Delete</Button>,
+              <Button onClick={handleDeleteComment} style={{ margin: "1px" }}>
+                Delete
+              </Button>
+              ,
             </>
           ) : (
             ""
