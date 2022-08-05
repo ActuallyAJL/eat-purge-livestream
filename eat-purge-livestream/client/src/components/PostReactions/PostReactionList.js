@@ -15,7 +15,7 @@ export const PostReactionList = ({ post, user }) => {
   return (
     <>
       {isLoaded ? (
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", maxWidth: "60%", flexWrap: "wrap" }}>
           {reactions.map((reaction) => (
             <PostReactionCard
               post={post}

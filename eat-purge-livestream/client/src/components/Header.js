@@ -29,35 +29,19 @@ export default function Header({ isLoggedIn }) {
           Home
         </NavLink>
       </NavItem>
-      {/* <NavItem>
-        <NavLink tag={RRNavLink} to="uploadImage">
-          Upload Image
-        </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink tag={RRNavLink} to="viewImage">
-          View Image
-        </NavLink>
-      </NavItem> */}
       <NavItem>
         <NavLink tag={RRNavLink} to="accountDetails">
           Account Details
         </NavLink>
       </NavItem>
     </>,
-    <>
-      <NavItem>
-        <NavLink tag={RRNavLink} to="/">
-          Home
-        </NavLink>
-      </NavItem>
-    </>,
+    <></>,
   ];
 
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand tag={RRNavLink} to="/">
+        <NavbarBrand tag={RRNavLink} to="/" style={{ marginRight: "50%" }}>
           Eat, Purge, Livestream
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />

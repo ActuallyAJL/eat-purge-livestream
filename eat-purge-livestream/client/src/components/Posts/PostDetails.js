@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   Card,
   CardBody,
@@ -31,7 +31,6 @@ export const PostDetails = () => {
 
   const { postId } = useParams();
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {

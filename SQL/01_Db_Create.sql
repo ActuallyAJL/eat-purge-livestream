@@ -30,7 +30,7 @@ GO
 CREATE TABLE [Post] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [Title] nvarchar(255) NOT NULL,
-  [Content] nvarchar(1000),
+  [Content] nvarchar(4000),
   [CreateDateTime] datetime NOT NULL,
   [ImageId] int,
   [UserProfileId] int NOT NULL
@@ -84,12 +84,3 @@ GO
 
 ALTER TABLE [PostReaction] ADD FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
 GO
-
-/*ALTER TABLE [UserProfile] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
-GO*/
-
-/*ALTER TABLE [Reaction] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
-GO*/
-
-/*ALTER TABLE [Post] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
-GO*/

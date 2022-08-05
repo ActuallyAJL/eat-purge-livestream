@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Card } from "reactstrap";
 import {
   createPostReaction,
   deletePostReaction,
@@ -88,7 +87,7 @@ export const PostReactionCard = ({ post, reaction, user }) => {
             onClick={handleTogglePr}
           >
             <img
-              alt="eat,purge,livestream"
+              alt={reaction.name}
               src={imageUrl}
               style={{ maxHeight: "20px", margin: "2px", borderRadius: "10px" }}
             />
