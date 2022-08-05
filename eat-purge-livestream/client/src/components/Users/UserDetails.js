@@ -111,7 +111,7 @@ export const UserDetails = () => {
             <div>
               <CardTitle>{currentUser.fullName}</CardTitle>
             </div>
-            <div>
+            <div style={{ width: "50%" }}>
               <CardImg alt="Eat, Purge, Livestream" src={`${userImageUrl}`} />
             </div>
           </div>
