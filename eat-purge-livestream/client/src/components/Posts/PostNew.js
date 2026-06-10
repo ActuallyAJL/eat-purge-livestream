@@ -63,7 +63,12 @@ export const PostNew = () => {
         </FormGroup>
         <FormGroup>
           <Label for="imageToUpload">Image: </Label>
-          <Input id="imageToUpload" type="file" onChange={handleSelectImage} />
+          <Input
+            id="imageToUpload"
+            type="file"
+            onChange={handleSelectImage}
+            required
+          />
         </FormGroup>
         <Button type="submit" required>
           Submit

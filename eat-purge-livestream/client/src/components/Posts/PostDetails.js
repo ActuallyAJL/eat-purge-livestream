@@ -146,7 +146,11 @@ export const PostDetails = () => {
           {isAddingComment ? newCommentCodeArray[0] : newCommentCodeArray[1]}
         </CardBody>
         <CardBody>
-          <CommentList post={post} key={post.id}></CommentList>
+          <CommentList
+            post={post}
+            key={post.id}
+            isAddingComment={isAddingComment}
+          ></CommentList>
         </CardBody>
       </Card>
     </>

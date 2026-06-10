@@ -86,7 +86,6 @@ export const CommentCard = ({ comment }) => {
               <Button onClick={handleDeleteComment} style={{ margin: "1px" }}>
                 Delete
               </Button>
-              ,
             </>
           ) : (
             ""
