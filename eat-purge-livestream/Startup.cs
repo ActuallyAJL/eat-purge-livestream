@@ -23,7 +23,11 @@ namespace eat_purge_livestream
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
             services.AddTransient<IImageRepository, ImageRepository>();
+            services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<IPostReactionRepository, PostReactionRepository>();
+            services.AddTransient<IReactionRepository, ReactionRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

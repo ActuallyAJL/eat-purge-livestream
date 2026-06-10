@@ -7,5 +7,3 @@ SELECT * FROM Comment;
 SELECT * FROM Reaction;
 SELECT * FROM PostReaction;
 SELECT * FROM Image;
-
-

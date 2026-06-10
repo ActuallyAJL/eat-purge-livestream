@@ -1,5 +1,3 @@
-import { PureComponent } from "react";
-
 const baseUrl = "/api/Image";
 
 export const getImageById = (id) => {

@@ -10,8 +10,9 @@ import {
   NavLink,
 } from "reactstrap";
 import { logout } from "../modules/authManager";
+import { getLoggedInUser } from "../modules/userManager";
 
-export default function Header({ isLoggedIn, getLoggedInUser }) {
+export default function Header({ isLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -28,7 +29,7 @@ export default function Header({ isLoggedIn, getLoggedInUser }) {
           Home
         </NavLink>
       </NavItem>
-      <NavItem>
+      {/* <NavItem>
         <NavLink tag={RRNavLink} to="uploadImage">
           Upload Image
         </NavLink>
@@ -37,7 +38,7 @@ export default function Header({ isLoggedIn, getLoggedInUser }) {
         <NavLink tag={RRNavLink} to="viewImage">
           View Image
         </NavLink>
-      </NavItem>
+      </NavItem> */}
       <NavItem>
         <NavLink tag={RRNavLink} to="accountDetails">
           Account Details

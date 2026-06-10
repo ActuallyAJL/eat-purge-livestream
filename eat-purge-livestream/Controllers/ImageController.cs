@@ -40,21 +40,10 @@ namespace eat_purge_livestream.Controllers
             {
                 await image.Body.CopyToAsync(memoryStream);
 
-                if (memoryStream.Length == 0)
-                {
-                    image.Id = 0;
-                }
-                else if (memoryStream.Length < 289715200)
-                {
-                    image.Id = _imageRepository.CreateImage(memoryStream.ToArray());
-                }
-                else
-                {
-                    image.Id = 0;
-                }
-
-                return Accepted(image);
+                image.Id = _imageRepository.CreateImage(memoryStream.ToArray());
+                
             }
+            return CreatedAtAction(nameof(GetImageById), new { id = image.Id }, image);
         }
 
         [HttpDelete("{id}")]

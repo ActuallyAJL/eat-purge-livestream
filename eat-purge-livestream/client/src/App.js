@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import ApplicationViews from "./components/ApplicationViews";
 import { onLoginStatusChange } from "./modules/authManager";
 
-function App({ getLoggedInUser }) {
+function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   useEffect(() => {
@@ -18,11 +18,8 @@ function App({ getLoggedInUser }) {
 
   return (
     <Router>
-      <Header isLoggedIn={isLoggedIn} getLoggedInUser={getLoggedInUser} />
-      <ApplicationViews
-        isLoggedIn={isLoggedIn}
-        getLoggedInUser={getLoggedInUser}
-      />
+      <Header isLoggedIn={isLoggedIn} />
+      <ApplicationViews isLoggedIn={isLoggedIn} />
     </Router>
   );
 }

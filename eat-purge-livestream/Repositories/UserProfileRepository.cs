@@ -62,7 +62,7 @@ namespace eat_purge_livestream.Repositories
                     DbUtils.AddParameter(cmd, "@LastName", userProfile.LastName);
                     DbUtils.AddParameter(cmd, "@Email", userProfile.Email);
                     DbUtils.AddParameter(cmd, "@CreateDateTime", userProfile.CreateDateTime);
-                    DbUtils.AddParameter(cmd, "@ImageId", null);
+                    DbUtils.AddParameter(cmd, "@ImageId", userProfile.ImageId);
 
                     userProfile.Id = (int)cmd.ExecuteScalar();
                 }
@@ -147,11 +147,12 @@ namespace eat_purge_livestream.Repositories
                 {
                     cmd.CommandText = @"
                         UPDATE UserProfile
-                        SET Email = @email, FirstName=@firstName, LastName=@lastName
+                        SET Email = @email, FirstName=@firstName, LastName=@lastName, ImageId=@imageId
                         WHERE Id = @id";
                     cmd.Parameters.AddWithValue("@email", userProfile.Email);
                     cmd.Parameters.AddWithValue("@firstName", userProfile.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", userProfile.LastName);
+                    cmd.Parameters.AddWithValue("@imageId", userProfile.ImageId);
                     cmd.Parameters.AddWithValue("@id", userProfile.Id);
 
                     cmd.ExecuteNonQuery();
