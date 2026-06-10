@@ -3,7 +3,7 @@ import { Col } from "reactstrap";
 import { getAllCommentsByPost } from "../../modules/commentManager";
 import { CommentCard } from "./CommentCard";
 
-export const CommentList = ({ post }) => {
+export const CommentList = ({ post, isAddingComment }) => {
   const [comments, setComments] = useState([]);
   const [hasComments, setHasComments] = useState(false);
 
@@ -11,7 +11,7 @@ export const CommentList = ({ post }) => {
     getAllCommentsByPost(post.id).then((blob) => {
       setComments(blob);
     });
-  }, []);
+  }, [isAddingComment]);
 
   useEffect(() => {
     setHasComments(comments.length > 0);

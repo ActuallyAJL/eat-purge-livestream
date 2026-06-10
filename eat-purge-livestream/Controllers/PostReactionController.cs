@@ -34,5 +34,11 @@ namespace eat_purge_livestream.Controllers
         {
             return Ok(_postReactionRepository.GetCountByPostId(postId, reactionId));
         }
+
+        [HttpGet("pr/{postId}/{reactionId}")]
+        public IActionResult GetAll(int postId, int reactionId)
+        {
+            return Ok(_postReactionRepository.GetPostReactionsByPostAndReactionId(postId, reactionId));
+        }
     }
 }

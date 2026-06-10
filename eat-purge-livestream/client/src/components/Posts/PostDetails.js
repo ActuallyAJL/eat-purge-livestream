@@ -85,10 +85,11 @@ export const PostDetails = () => {
             setIsAddingComment(false);
           }}
           required
+          style={{ margin: "1px" }}
         >
           Cancel
         </Button>
-        <Button type="submit" required>
+        <Button type="submit" required style={{ margin: "1px" }}>
           Submit
         </Button>
       </Form>
@@ -97,6 +98,7 @@ export const PostDetails = () => {
       onClick={() => {
         setIsAddingComment(true);
       }}
+      style={{ margin: "1px" }}
     >
       Add Comment
     </Button>,
@@ -130,10 +132,13 @@ export const PostDetails = () => {
                     state: { post: post },
                   });
                 }}
+                style={{ margin: "1px" }}
               >
                 Edit
               </Button>
-              <Button onClick={handleDeletePost}>Delete</Button>
+              <Button onClick={handleDeletePost} style={{ margin: "1px" }}>
+                Delete
+              </Button>
             </>
           ) : (
             ""
@@ -141,7 +146,11 @@ export const PostDetails = () => {
           {isAddingComment ? newCommentCodeArray[0] : newCommentCodeArray[1]}
         </CardBody>
         <CardBody>
-          <CommentList post={post} key={post.id}></CommentList>
+          <CommentList
+            post={post}
+            key={post.id}
+            isAddingComment={isAddingComment}
+          ></CommentList>
         </CardBody>
       </Card>
     </>

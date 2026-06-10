@@ -19,3 +19,9 @@ export const deletePostReaction = (id) => {
 export const getPostReactionCount = (postId, reactionId) => {
   return fetch(`${baseUrl}/${postId}/${reactionId}`).then((res) => res.json());
 };
+
+export const getPostReactionsByPostAndReaction = (postId, reactionId) => {
+  return fetch(`${baseUrl}/pr/${postId}/${reactionId}`).then((res) =>
+    res.json()
+  );
+};

@@ -20,6 +20,7 @@ export const PostList = () => {
         onClick={() => {
           navigate("addPost");
         }}
+        style={{ margin: "1px" }}
       >
         Add Post
       </Button>

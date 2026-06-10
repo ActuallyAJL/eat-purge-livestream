@@ -85,11 +85,11 @@ GO
 ALTER TABLE [PostReaction] ADD FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
 GO
 
-ALTER TABLE [UserProfile] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
-GO
+/*ALTER TABLE [UserProfile] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
+GO*/
 
-ALTER TABLE [Reaction] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
-GO
+/*ALTER TABLE [Reaction] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
+GO*/
 
 /*ALTER TABLE [Post] ADD FOREIGN KEY ([ImageId]) REFERENCES [Image] ([Id])
 GO*/
